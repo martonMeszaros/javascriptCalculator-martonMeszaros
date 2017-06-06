@@ -74,6 +74,7 @@ body {
   cursor: pointer;
 }
 .button:hover {
+  background: #E0E0E0;
   border-color: #9E9E9E;
 }
 .button:active {
@@ -102,7 +103,7 @@ body {
   border-color: #A1887F;
 }
 .brown:hover {
-  background: #A1887F;
+  background: #BCAAA4;
   border-color: #795548;
 }
 .brown:active {
