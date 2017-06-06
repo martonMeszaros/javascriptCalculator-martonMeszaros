@@ -5,9 +5,20 @@ var values = [0];
 var operations = [];
 var decimalPlace = 1;
 
-function buttonClick() {
-    let input = this.dataset.input;
-    switch (input) {
+function switchInput(input) {
+    switch(input) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            addNewNumber(input);
+            break;
         case '+':
         case '-':
         case '*':
@@ -15,21 +26,36 @@ function buttonClick() {
             addNewOperation(input);
             break;
         case '.':
-            if(decimalPlace === 1) {
-                decimalPlace *= 0.1;
-            }
+            decreateDecimalPlace();
             break;
         case '=':
+        case 'Enter':
             updatePreviousOutputs(calculateResult());
             resetCalculation();
             break;
         case 'clear':
+        case 'Delete':
             resetCalculation();
             break;
-        default:
-            addNewNumber(input);    
     }
     updateOutput();
+}
+
+function handleButtonClick() {
+    let input = this.dataset.input;
+    switchInput(input);
+    
+}
+
+function handleKeyboardPress(event) {
+    let input = event.key;
+    switchInput(input);
+}
+
+function decreateDecimalPlace() {
+    if(decimalPlace === 1) {
+        decimalPlace *= 0.1;
+    }
 }
 
 function addNewNumber(input) {
@@ -56,6 +82,7 @@ function resetCalculation() {
 
 function calculateResult() {
     let result = values[0];
+    let errorOccured = false;
     for(let index = 1; index < values.length; index++) {
         if(values[index] !== undefined) {
             switch(operations[index - 1]) {
@@ -69,9 +96,16 @@ function calculateResult() {
                     result *= values[index];
                     break;
                 case '/':
-                    result /= values[index];
+                    if(values[index] === 0) {
+                        errorOccured = true;
+                    }else {
+                        result /= values[index];
+                    }
                     break;
             }
+        }
+        if(errorOccured) {
+            result = 'You tried to divide by 0!';
         }
     }
     return result;
@@ -95,6 +129,9 @@ window.addEventListener('load', function(){
     previousOutputs.innerText = '';
     updateOutput();
     for(button of buttons) {
-        button.addEventListener('click', buttonClick, false);
+        button.addEventListener('click', handleButtonClick, false);
     }
+    window.addEventListener('keyup', function(event){
+        handleKeyboardPress(event);
+    }, true);
 });
