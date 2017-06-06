@@ -1,4 +1,5 @@
-section {
+section,
+aside {
   display: block;
 }
 
@@ -107,6 +108,12 @@ body {
 .brown:active {
   background: #795548;
   border-color: #5D4037;
+}
+
+aside {
+  color: #EEE;
+  font-size: 1.15em;
+  text-align: center;
 }
 
 #previous-outputs {
