@@ -1,0 +1,139 @@
+$font-family: Helvetica, Verdana, sans-serif
+$line-height: 1.25
+
+$white: #FFF
+$grey200: #EEE
+$grey300: #E0E0E0
+$grey400: #BDBDBD
+$grey500: #9E9E9E
+$black: #000
+$blue-grey100: #CFD8DC
+$blue-grey500: #607D8B
+$amber300: #FFD54F
+$amber400: #FFCA28
+$amber600: #FFB300
+$amber700: #FFA000
+$orange400: #FFA726
+$orange600: #FB8C00
+
+
+$rad: 3px
+$s-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.15)
+$shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.15)
+
+section
+  display: block
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  outline: none
+  font-size: 1em
+  line-height: $line-height
+
+\:root
+  font-size: 18px
+
+body
+  background: $grey400
+  font-family: $font-family
+
+#calculator-wrapper
+  display: flex
+  flex:
+    wrap: wrap
+
+  max-width: 500px
+  margin: 5vh auto
+  padding: 1.5ch 1ch
+  background: $grey200
+  border-radius: $rad
+  box-shadow: $shadow
+
+#previous-outputs,
+#output,
+.button
+  border-radius: $rad
+
+#previous-outputs,
+#output
+  margin: 0 0.5ch 0.5ch
+  padding: 1ch
+  background: $grey300
+  text-align: right
+
+#previous-outputs
+  width: calc(100% - (2*0.5ch))
+  min-height: calc(5em * #{$line-height})
+
+#output
+  width: calc(75% - (2*0.5ch))
+
+.button
+  width: calc(25% - (2*0.5ch))
+  height: 2.5em
+  margin: 0 0.5ch 0.5ch
+  background: $grey200
+  border: thin solid $grey400
+  cursor: pointer
+
+  &:hover
+    border-color: $grey500
+    box-shadow: $s-shadow
+  
+  &:active
+    background: $blue-grey100
+    border-color: $blue-grey500
+
+.orange
+  background: $amber300
+  border-color: $amber600
+
+  &:hover
+    background: $amber400
+    border-color: $amber700
+  
+  &:active
+    background: $orange400
+    border-color: $orange600
+
+// Element ordering
+#previous-outputs
+  order: 1
+.button[data-button='C']
+  order: 2
+#output
+  order: 3
+.button[data-button='7']
+  order: 4
+.button[data-button='8']
+  order: 5
+.button[data-button='9']
+  order: 6
+.button[data-button='/']
+  order: 7
+.button[data-button='4']
+  order: 8
+.button[data-button='5']
+  order: 9
+.button[data-button='6']
+  order: 10
+.button[data-button='*']
+  order: 11
+.button[data-button='1']
+  order: 12
+.button[data-button='2']
+  order: 13
+.button[data-button='3']
+  order: 14
+.button[data-button='-']
+  order: 15
+.button[data-button='0']
+  order: 16
+.button[data-button='.']
+  order: 17
+.button[data-button='=']
+  order: 18
+.button[data-button='+']
+  order: 19
