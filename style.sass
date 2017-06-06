@@ -6,6 +6,7 @@ $grey200: #EEE
 $grey300: #E0E0E0
 $grey400: #BDBDBD
 $grey500: #9E9E9E
+$grey700: #616161
 $black: #000
 $blue-grey100: #CFD8DC
 $blue-grey500: #607D8B
@@ -15,11 +16,17 @@ $amber600: #FFB300
 $amber700: #FFA000
 $orange400: #FFA726
 $orange600: #FB8C00
+$brown100: #D7CCC8
+$brown300: #A1887F
+$brown500: #795548
+$brown700: #5D4037
 
 
 $rad: 3px
-$s-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.15)
-$shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.15)
+$calculator-rad: 5px
+$calculator-shadow: 0 15px $grey400
+$button-shadow: 0 4px $grey400
+$pressed-button-shadow: 0 2px $grey400
 
 section
   display: block
@@ -36,7 +43,7 @@ section
   font-size: 18px
 
 body
-  background: $grey400
+  background: $grey700
   font-family: $font-family
 
 #calculator-wrapper
@@ -48,8 +55,8 @@ body
   margin: 5vh auto
   padding: 1.5ch 1ch
   background: $grey200
-  border-radius: $rad
-  box-shadow: $shadow
+  border-radius: $calculator-rad
+  box-shadow: $calculator-shadow
 
 #previous-outputs,
 #output,
@@ -61,30 +68,35 @@ body
   margin: 0 0.5ch 0.5ch
   padding: 1ch
   background: $grey300
+  border-radius: $rad
   text-align: right
 
 #previous-outputs
   width: calc(100% - (2*0.5ch))
-  min-height: calc(5em * #{$line-height})
+  height: calc(7em*#{$line-height} + (2*1ch))
+  overflow-y: auto
 
 #output
   width: calc(75% - (2*0.5ch))
 
 .button
+  position: relative
   width: calc(25% - (2*0.5ch))
   height: 2.5em
-  margin: 0 0.5ch 0.5ch
+  margin: 0 0.5ch 0.75ch
   background: $grey200
   border: thin solid $grey400
+  box-shadow: $button-shadow
   cursor: pointer
 
   &:hover
     border-color: $grey500
-    box-shadow: $s-shadow
   
   &:active
+    top: 2px
     background: $blue-grey100
     border-color: $blue-grey500
+    box-shadow: $pressed-button-shadow
 
 .orange
   background: $amber300
@@ -97,6 +109,18 @@ body
   &:active
     background: $orange400
     border-color: $orange600
+
+.brown  
+  background: $brown100
+  border-color: $brown300
+
+  &:hover
+    background: $brown300
+    border-color: $brown500
+  
+  &:active
+    background: $brown500
+    border-color: $brown700
 
 // Element ordering
 #previous-outputs

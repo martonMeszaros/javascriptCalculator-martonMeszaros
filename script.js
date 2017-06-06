@@ -88,7 +88,7 @@ function updateOutput() {
 }
 
 function updatePreviousOutputs(result) {
-    previousOutputs.innerText += result + '\n';
+    previousOutputs.innerText = result + '\n' + previousOutputs.innerText;
 }
 
 window.addEventListener('load', function(){
