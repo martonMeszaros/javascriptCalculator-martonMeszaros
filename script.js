@@ -26,7 +26,7 @@ function switchInput(input) {
             addNewOperation(input);
             break;
         case '.':
-            decreateDecimalPlace();
+            decreaseDecimalPlace();
             break;
         case '=':
         case 'Enter':
@@ -52,7 +52,7 @@ function handleKeyboardPress(event) {
     switchInput(input);
 }
 
-function decreateDecimalPlace() {
+function decreaseDecimalPlace() {
     if(decimalPlace === 1) {
         decimalPlace *= 0.1;
     }
@@ -106,6 +106,7 @@ function calculateResult() {
         }
         if(errorOccured) {
             result = 'You tried to divide by 0!';
+            break;
         }
     }
     return result;
